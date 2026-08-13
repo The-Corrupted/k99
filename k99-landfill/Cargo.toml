@@ -1,0 +1,12 @@
+[package]
+name = "k99-landfill"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+serde = { workspace = true }
+lexopt = { workspace = true }
+toml = { workspace = true }
+thiserror = { workspace = true }
+nix = { workspace = true }
+landlock = "^0.4.7"
