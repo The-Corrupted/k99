@@ -10,3 +10,7 @@ toml = { workspace = true }
 thiserror = { workspace = true }
 nix = { workspace = true }
 landlock = "^0.4.7"
+indextree = { version = "^4.8.1" }
+
+[lib]
+path = "src/lib.rs"
