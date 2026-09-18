@@ -7,10 +7,9 @@ use k99_landfill::hierarchy::Hierarchy;
 use k99_landfill::rule::OperationType;
 use k99_landfill::rule::{Abi, PermissionOp, RuleSpec::Fs, normalize_rule};
 use landlock::{
-    Access, AccessFs, BitFlags, Compatible, PathBeneath, PathFd, RestrictSelfAttr, Ruleset,
-    RulesetAttr, RulesetCreatedAttr,
+    Access, AccessFs, Compatible, PathBeneath, PathFd, RestrictSelfAttr, Ruleset, RulesetAttr,
+    RulesetCreatedAttr,
 };
-use std::path::PathBuf;
 
 use crate::cli::parse_args;
 use crate::execute::execute;

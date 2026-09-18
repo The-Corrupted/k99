@@ -3,7 +3,6 @@ use crate::rule::PermissionOp;
 use indextree::{Arena, NodeId};
 use landlock::{AccessFs, BitFlags};
 use std::collections::HashMap;
-use std::ffi::OsString;
 use std::path::PathBuf;
 
 #[derive(Debug, Clone, PartialEq, Eq)]

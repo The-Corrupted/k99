@@ -1,0 +1,123 @@
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
+pub enum ArgId {
+    Rox,
+    Rwx,
+    Rw,
+    Ro,
+    ExplicitAdd,
+    ExplicitRemove,
+    NetAdd,
+    NetRemove,
+    Abi,
+    Help,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
+pub enum ArgDomain {
+    Fs,
+    Net,
+    Global,
+}
+
+struct Arg<'a> {
+    pub id: ArgId,
+    pub arg_domain: ArgDomain,
+    pub long: &'a str,
+    pub short: Option<&'a str>,
+    pub toml: Option<&'a str>,
+    pub value_name: Option<&'a str>,
+    pub help: &'a str,
+}
+
+static ALL_ARGS: &[Arg] = &[
+    Arg {
+        id: ArgId::Rox,
+        arg_domain: ArgDomain::Fs,
+        long: "--rox",
+        short: None,
+        toml: Some("rox"),
+        value_name: Some("<path>"),
+        help: "Grant read-executable permissions to path",
+    },
+    Arg {
+        id: ArgId::Rwx,
+        arg_domain: ArgDomain::Fs,
+        long: "--rwx",
+        short: None,
+        toml: Some("rwx"),
+        value_name: Some("<path>"),
+        help: "Grant read-write-executable permissions to path",
+    },
+    Arg {
+        id: ArgId::Rw,
+        arg_domain: ArgDomain::Fs,
+        long: "--rw",
+        short: None,
+        toml: Some("rw"),
+        value_name: Some("<path>"),
+        help: "Grant read-write permissions to path",
+    },
+    Arg {
+        id: ArgId::Ro,
+        arg_domain: ArgDomain::Fs,
+        long: "--ro",
+        short: None,
+        toml: Some("ro"),
+        value_name: Some("<path>"),
+        help: "Grant read-only permissions to path",
+    },
+    Arg {
+        id: ArgId::ExplicitAdd,
+        arg_domain: ArgDomain::Fs,
+        long: "--add-fs-perms",
+        short: None,
+        toml: Some("explicit_add"),
+        value_name: Some("<perms> <path>"),
+        help: "Grants valid explicit permissions to path",
+    },
+    Arg {
+        id: ArgId::ExplicitRemove,
+        arg_domain: ArgDomain::Fs,
+        long: "--remove-fs-perms",
+        short: None,
+        toml: Some("explicit_remove"),
+        value_name: Some("<perms> <path>"),
+        help: "Removes valid explicit permissions from a path",
+    },
+    Arg {
+        id: ArgId::NetAdd,
+        arg_domain: ArgDomain::Net,
+        long: "--net-add",
+        short: None,
+        toml: Some("add"),
+        value_name: Some("<perms> <port>"),
+        help: "Grant valid permissions to a port",
+    },
+    Arg {
+        id: ArgId::NetRemove,
+        arg_domain: ArgDomain::Net,
+        long: "--net-remove",
+        short: None,
+        toml: Some("remove"),
+        value_name: Some("<perms> <port>"),
+        help: "Remove valid explicit permissions from a port",
+    },
+    Arg {
+        id: ArgId::Abi,
+        arg_domain: ArgDomain::Global,
+        long: "--abi",
+        short: None,
+        toml: Some("abi"),
+        value_name: Some("<int>"),
+        help: "Set the target ABI version",
+    },
+    Arg {
+        id: ArgId::Help,
+        arg_domain: ArgDomain::Global,
+        long: "--help",
+        short: Some("-?"),
+        toml: None,
+        value_name: None,
+        help: "Print help",
+    },
+];
